@@ -1,7 +1,16 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+/*
+Colors:
+  #f6bd60
+  #f7ede2
+  #f5cac3
+  #84a59d
+  #f28482
+*/
+
+const roboto = Roboto({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +20,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={roboto.className}>
+        <header className="border border-neutral-200 flex justify-between items-center p-4">
+          <a href="/" className="text-xl">FixMyCode</a>
+          <div></div>
+          <div className="flex gap-4 items-center">
+            <a href="/sobre">Sobre Nós</a>
+            <a href="/comecar">Como Começar</a>
+          </div>
+          <div className="flex gap-4 items-center">
+            <a href="/">Sign In</a>
+            <a href="/" className="bg-[#f6bd60] hover:bg-[#fcbc68] p-2">Sign Up</a>
+          </div>
+        </header>
+        {children}
+        </body>
     </html>
   )
 }
