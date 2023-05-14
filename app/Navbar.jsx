@@ -8,9 +8,9 @@ export default function Navbar() {
 	return (
 		<header className='flex justify-between items-center py-4'>
 			<a href='/' className='text-4xl'>
-				Korjata
+				KORJATA
 			</a>
-			<div className='flex gap-4 items-center'>
+			<div className='max-sm:opacity-0 max-sm:absolute flex gap-4 items-center'>
 				<a href='/' className={pathName[1] == '' ? 'text-primary-one-300' : ''}>
 					Início
 				</a>

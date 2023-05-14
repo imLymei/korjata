@@ -16,6 +16,11 @@ module.exports = {
 				'primary-two-100': '#143782',
 				ascent: '#789fdd',
 			},
+			boxShadow: {
+				'glow-md': '0 0 6px -1px rgba(0, 0, 0, 0.1)',
+				'glow-lg': '0 0 15px -3px rgba(0, 0, 0, 0.1)',
+				'glow-xl': '0 0 25px -5px rgba(0, 0, 0, 0.1)',
+			},
 		},
 	},
 	plugins: [],

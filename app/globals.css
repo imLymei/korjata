@@ -8,6 +8,10 @@
 	--ascent-color: #789fdd;
 }
 
+.rounded-card {
+	@apply rounded-xl sm:hover:scale-105 transition-all duration-300 md:min-h-[45vw] lg:min-h-[25vw] p-4 flex flex-col justify-center items-center;
+}
+
 /*scrollbar settings*/
 
 ::-webkit-scrollbar {
