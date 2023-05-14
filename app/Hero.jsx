@@ -20,7 +20,7 @@ export default function Hero() {
 						</h1>
 					</div>
 					<p className='text-xl w-3/4'>
-						Korjata é uma plataforma de conexão entre programadores freelancers com empresas em busca de
+						Korjata é uma plataforma de conexão entre programadores freelancers e empresas em busca de
 						soluções.
 					</p>
 					<a
