@@ -32,11 +32,14 @@ function IsLogged({ session }) {
 	return (
 		<>
 			<button onClick={signOut}>Sair</button>
-			<div className='w-8 border border-primary-one-300 rounded-xl overflow-hidden'>
-				<a href='/user'>
+			<a
+				href='/user'
+				className='flex justify-center items-center gap-2 p-2 rounded-xl hover:bg-primary-one-300/10'>
+				<div className='w-6 border border-primary-one-300 rounded-xl overflow-hidden'>
 					<Image src={session.user.image} alt='User image' width={1000} height={1000} />
-				</a>
-			</div>
+				</div>
+				<p>{session.user.name}</p>
+			</a>
 		</>
 	);
 }
