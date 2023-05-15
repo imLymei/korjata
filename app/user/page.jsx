@@ -19,11 +19,3 @@ function IsLogged({ session }) {
 function NoLogged() {
 	return <h1>no logged</h1>;
 }
-
-export async function getServerSideProps(context) {
-	const session = await getSession(context);
-
-	return {
-		props: { session },
-	};
-}
