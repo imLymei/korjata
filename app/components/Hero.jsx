@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Roboto_Slab } from 'next/font/google';
+import SignInButton from './SignInButton';
 
 const robotoSlab = Roboto_Slab({
 	subsets: ['latin'],
@@ -23,11 +24,7 @@ export default function Hero() {
 						Korjata é uma plataforma de conexão entre programadores freelancers e empresas em busca de
 						soluções.
 					</p>
-					<a
-						href='/'
-						className='bg-primary-one-300 hover:bg-primary-one-200 hover:scale-105 transition-all duration-300 rounded-lg px-4 py-2 w-fit'>
-						Cadastre-se gratuitamente
-					</a>
+					<SignInButton text={'Cadastre-se gratuitamente'} />
 				</div>
 				<div className='relative col-span-3'>
 					<Image

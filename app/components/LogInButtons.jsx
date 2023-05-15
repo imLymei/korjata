@@ -9,7 +9,7 @@ export default function LogInButtons() {
 	let isLoading = status == 'loading';
 
 	return (
-		<div className='flex gap-4 items-center justify-end'>
+		<div className='flex gap-2 items-center justify-end'>
 			{isLoading ? <IsLoading /> : session ? <IsLogged session={session} /> : <NoLogged />}
 		</div>
 	);
@@ -18,12 +18,11 @@ export default function LogInButtons() {
 function NoLogged() {
 	return (
 		<>
-			<button onClick={signIn}>Entrar</button>
-			<a
-				href='/'
+			<button
+				onClick={signIn}
 				className='bg-primary-one-300 hover:bg-primary-one-200 hover:scale-105 transition-all duration-300 rounded-lg px-4 py-2'>
-				Cadastre-se
-			</a>
+				Entrar
+			</button>
 		</>
 	);
 }
@@ -31,7 +30,9 @@ function NoLogged() {
 function IsLogged({ session }) {
 	return (
 		<>
-			<button onClick={signOut}>Sair</button>
+			<button onClick={signOut} className='py-2 px-4 rounded-xl hover:bg-primary-one-300/10'>
+				Sair
+			</button>
 			<a
 				href='/user'
 				className='flex justify-center items-center gap-2 p-2 rounded-xl hover:bg-primary-one-300/10'>
