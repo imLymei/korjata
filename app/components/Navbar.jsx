@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import LogInButtons from './LogInButtons';
 
 export default function Navbar() {
 	const pathName = usePathname().split('/');
@@ -21,14 +22,7 @@ export default function Navbar() {
 					Como Começar
 				</a>
 			</div>
-			<div className='flex gap-4 items-center'>
-				<a href='/'>Entrar</a>
-				<a
-					href='/'
-					className='bg-primary-one-300 hover:bg-primary-one-200 hover:scale-105 transition-all duration-300 rounded-lg px-4 py-2'>
-					Cadastre-se
-				</a>
-			</div>
+			<LogInButtons />
 		</header>
 	);
 }
