@@ -36,7 +36,7 @@ function IsLogged({ session }) {
 				<div className='w-6 border border-primary-one-300 rounded-xl overflow-hidden'>
 					<Image src={session.user.image} alt='User image' width={1000} height={1000} />
 				</div>
-				<p className='max-sm:absolute max-sm:w-0 max-sm:h-0 overflow-hidden'>{session.user.name}</p>
+				<p className='max-sm:absolute max-sm:w-0 max-sm:h-0 max-sm:overflow-hidden'>{session.user.name}</p>
 			</a>
 		</>
 	);
