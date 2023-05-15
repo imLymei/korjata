@@ -11,7 +11,7 @@ export default function Navbar() {
 			<a href='/' className='text-4xl self-start'>
 				KORJATA
 			</a>
-			<div className='max-sm:opacity-0 max-sm:absolute flex gap-4 items-center justify-center'>
+			<div className='max-sm:opacity-0 max-sm:w-0 max-sm:h-0 max-sm:overflow-hidden flex gap-4 items-center justify-center'>
 				<a href='/' className={pathName[1] == '' ? 'text-primary-one-300' : ''}>
 					Início
 				</a>

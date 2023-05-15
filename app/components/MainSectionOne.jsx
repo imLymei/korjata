@@ -39,8 +39,8 @@ function Enterprise() {
 			<h2 className={`text-4xl px-4 py-2 rounded-xl mb-16 ${robotoSlab.className}`}>
 				Porque escolher os programadores da Korjata?
 			</h2>
-			<div className='grid sm:grid-cols-3 gap-8'>
-				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card'>
+			<div className='grid sm:grid-cols-3 gap-8 max-sm:pb-8'>
+				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card max-sm:w-4/5 max-sm:mx-auto'>
 					<div className='mb-4'>
 						<Image
 							src='./Virtual.svg'
@@ -58,7 +58,7 @@ function Enterprise() {
 						Escolha quem ira ter a change de solucionar o seu problema!
 					</p>
 				</div>
-				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card'>
+				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card max-sm:w-4/5 max-sm:mx-auto'>
 					<div className='mb-4'>
 						<Image
 							src='./Online.svg'
@@ -76,7 +76,7 @@ function Enterprise() {
 						possível do seu resultado esperado!
 					</p>
 				</div>
-				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card'>
+				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card max-sm:w-4/5 max-sm:mx-auto'>
 					<div className='mb-4'>
 						<Image
 							src='./Virtual.svg'
@@ -106,8 +106,8 @@ function Programmer() {
 			<h2 className={`text-4xl px-4 py-2 rounded-xl mb-16 ${robotoSlab.className}`}>
 				Porque trabalhar na Korjata?
 			</h2>
-			<div className='grid sm:grid-cols-3 gap-8'>
-				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card'>
+			<div className='grid sm:grid-cols-3 gap-8 max-sm:pb-8'>
+				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card max-sm:w-4/5 max-sm:mx-auto'>
 					<div className='mb-4'>
 						<Image
 							src='./Milestone.svg'
@@ -125,7 +125,7 @@ function Programmer() {
 						de mostrar suas habilidades!
 					</p>
 				</div>
-				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card'>
+				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card max-sm:w-4/5 max-sm:mx-auto'>
 					<div className='mb-4'>
 						<Image
 							src='./Climbing.svg'
@@ -140,7 +140,7 @@ function Programmer() {
 					<h3 className={`text-lg my-4 ${robotoSlab.className}`}>Aprimore seus conhecimentos</h3>
 					<p>Pratique suas habilidades enquanto ganha dinheiro pelo seu tempo e esforço!</p>
 				</div>
-				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card'>
+				<div className='bg-black/30 sm:hover:bg-black/25 shadow-inner shadow-black/25 rounded-card max-sm:w-4/5 max-sm:mx-auto'>
 					<div className='mb-4'>
 						<Image
 							src='./Build.svg'
