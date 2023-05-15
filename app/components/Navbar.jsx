@@ -7,11 +7,11 @@ export default function Navbar() {
 	const pathName = usePathname().split('/');
 
 	return (
-		<header className='flex justify-between items-center py-4'>
-			<a href='/' className='text-4xl'>
+		<header className='grid grid-cols-3 py-4'>
+			<a href='/' className='text-4xl self-start'>
 				KORJATA
 			</a>
-			<div className='max-sm:opacity-0 max-sm:absolute flex gap-4 items-center'>
+			<div className='max-sm:opacity-0 max-sm:absolute flex gap-4 items-center justify-center'>
 				<a href='/' className={pathName[1] == '' ? 'text-primary-one-300' : ''}>
 					Início
 				</a>

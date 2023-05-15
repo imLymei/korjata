@@ -1,13 +1,17 @@
 'use client';
 
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signIn, signOut, getSession } from 'next-auth/react';
 import Image from 'next/image';
 
 export default function LogInButtons() {
-	const { data: session } = useSession();
+	const { data: session, status } = useSession();
+
+	let isLoading = status == 'loading';
 
 	return (
-		<div className='flex gap-4 items-center'>{session ? <IsLogged session={session} /> : <NoLogged />}</div>
+		<div className='flex gap-4 items-center justify-end'>
+			{isLoading ? <IsLoading /> : session ? <IsLogged session={session} /> : <NoLogged />}
+		</div>
 	);
 }
 
@@ -32,6 +36,16 @@ function IsLogged({ session }) {
 				<a href='/user'>
 					<Image src={session.user.image} alt='User image' width={1000} height={1000} />
 				</a>
+			</div>
+		</>
+	);
+}
+
+function IsLoading() {
+	return (
+		<>
+			<div className='w-8 h-8 flex justify-center items-center'>
+				<Image src='/loading-dots.gif' alt='User image' width={1000} height={1000} />
 			</div>
 		</>
 	);
