@@ -2,6 +2,7 @@
 
 import { useSession, signIn, signOut, getSession } from 'next-auth/react';
 import Image from 'next/image';
+import SignInButton from './SignInButton';
 
 export default function LogInButtons() {
 	const { data: session, status } = useSession();
@@ -18,11 +19,7 @@ export default function LogInButtons() {
 function NoLogged() {
 	return (
 		<>
-			<button
-				onClick={signIn}
-				className='bg-primary-one-300 hover:bg-primary-one-200 hover:scale-105 transition-all duration-300 rounded-lg px-4 py-2'>
-				Entrar
-			</button>
+			<SignInButton text='Entrar'></SignInButton>
 		</>
 	);
 }
@@ -39,7 +36,7 @@ function IsLogged({ session }) {
 				<div className='w-6 border border-primary-one-300 rounded-xl overflow-hidden'>
 					<Image src={session.user.image} alt='User image' width={1000} height={1000} />
 				</div>
-				<p>{session.user.name}</p>
+				<p className='max-sm:absolute max-sm:w-0 max-sm:h-0'>{session.user.name}</p>
 			</a>
 		</>
 	);
