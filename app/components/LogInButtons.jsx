@@ -27,7 +27,7 @@ function NoLogged() {
 
 function IsLogged({ session }) {
 	return (
-		<>
+		<div className='no-app-region'>
 			<button onClick={signOut} className='py-2 px-4 rounded-xl hover:bg-primary-one-300/10'>
 				Sair
 			</button>
@@ -39,6 +39,6 @@ function IsLogged({ session }) {
 				</div>
 				<p className='max-sm:absolute max-sm:w-0 max-sm:h-0 max-sm:overflow-hidden'>{session.user.name}</p>
 			</a>
-		</>
+		</div>
 	);
 }
