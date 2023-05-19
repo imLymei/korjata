@@ -11,7 +11,7 @@ export default function LogInButtons() {
 	let isLoading = status == 'loading';
 
 	return (
-		<div className='flex gap-2 items-center justify-end'>
+		<div className='flex gap-2 items-center justify-end no-app-region'>
 			{isLoading ? <IsLoading /> : session ? <IsLogged session={session} /> : <NoLogged />}
 		</div>
 	);
@@ -27,7 +27,7 @@ function NoLogged() {
 
 function IsLogged({ session }) {
 	return (
-		<div className='no-app-region'>
+		<>
 			<button onClick={signOut} className='py-2 px-4 rounded-xl hover:bg-primary-one-300/10'>
 				Sair
 			</button>
@@ -39,6 +39,6 @@ function IsLogged({ session }) {
 				</div>
 				<p className='max-sm:absolute max-sm:w-0 max-sm:h-0 max-sm:overflow-hidden'>{session.user.name}</p>
 			</a>
-		</div>
+		</>
 	);
 }
