@@ -8,10 +8,10 @@ export default function Navbar() {
 
 	return (
 		<header className='grid grid-cols-3 py-4'>
-			<a href='/' className='text-4xl self-start'>
+			<a href='/' className='text-4xl self-start no-app-region'>
 				KORJATA
 			</a>
-			<div className='max-sm:opacity-0 max-sm:w-0 max-sm:h-0 max-sm:overflow-hidden flex gap-4 items-center justify-center'>
+			<div className='max-sm:opacity-0 max-sm:w-0 max-sm:h-0 max-sm:overflow-hidden flex gap-4 items-center justify-center no-app-region'>
 				<a href='/' className={pathName[1] == '' ? 'text-primary-one-300' : ''}>
 					Início
 				</a>

@@ -16,6 +16,10 @@
 	-webkit-app-region: drag;
 }
 
+.no-app-region {
+	-webkit-app-region: no-drag;
+}
+
 /*scrollbar settings*/
 
 ::-webkit-scrollbar {
