@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import { Roboto_Slab } from 'next/font/google';
 import SignInButton from './SignInButton';
+import { useSession } from 'next-auth/react';
 
 const robotoSlab = Roboto_Slab({
 	subsets: ['latin'],
@@ -8,6 +11,10 @@ const robotoSlab = Roboto_Slab({
 });
 
 export default function Hero() {
+	const { data: session, state } = useSession();
+
+	const loading = state == 'loading';
+
 	return (
 		<div className='flex flex-col items-center'>
 			<div className='flex flex-col-reverse sm:grid grid-cols-5'>
@@ -24,7 +31,7 @@ export default function Hero() {
 						Korjata é uma plataforma de conexão entre programadores freelancers e empresas em busca de
 						soluções.
 					</p>
-					<SignInButton text={'Cadastre-se gratuitamente'} />
+					{session ? <SignInButton text={'Cadastre-se gratuitamente'} /> : <a href='/comecar'>Comece já!</a>}
 				</div>
 				<div className='relative max-sm:w-[50vw] max-sm:h-[50vw] max-sm:mx-auto col-span-3'>
 					<Image
