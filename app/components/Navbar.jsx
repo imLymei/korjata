@@ -7,7 +7,7 @@ export default function Navbar() {
 	const pathName = usePathname().split('/');
 
 	return (
-		<header className='grid grid-cols-3 py-4 app-region'>
+		<header className='grid grid-cols-3 py-4'>
 			<a href='/' className='text-4xl self-start'>
 				KORJATA
 			</a>

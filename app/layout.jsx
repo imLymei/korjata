@@ -15,6 +15,7 @@ export default function RootLayout({ children, session }) {
 	return (
 		<html lang='en'>
 			<body className={`bg-black text-white px-2 sm:px-[2vw] lg:px-[19vw] ${roboto.className}`}>
+				<div className='fixed top-0 left-0 h-10 w-screen -z-10 app-region'></div>
 				<NextProvider session={session}>
 					<Navbar />
 					{children}
