@@ -11,10 +11,11 @@ export default function Navbar() {
 			<a href='/' className='text-4xl self-start no-app-region'>
 				KORJATA
 			</a>
-			<div className='max-sm:opacity-0 max-sm:w-0 max-sm:h-0 max-sm:overflow-hidden flex gap-4 items-center justify-center no-app-region'>
+			<div className='max-sm:opacity-0 max-sm:w-0 max-sm:h-0 max-sm:overflow-hidden flex gap-4 items-center justify-center no-app-region transition-all text-center'>
 				<a href='/' className={pathName[1] == '' ? 'text-primary-one-300' : ''}>
 					Início
 				</a>
+
 				<a href='/sobre' className={pathName[1] == 'sobre' ? 'text-primary-one-300' : ''}>
 					Sobre Nós
 				</a>
