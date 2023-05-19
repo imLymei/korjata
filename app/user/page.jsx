@@ -15,7 +15,7 @@ function IsLogged({ session }) {
 	return (
 		<div className='text-center'>
 			<h1 className='text-4xl m-4'>Bem vindo {session.user.name}!</h1>
-			<div className='-translate-y-1/2 flex flex-col items-center gap-4'>
+			<div className='flex flex-col items-center gap-4'>
 				<WorkInProgress />
 			</div>
 		</div>
