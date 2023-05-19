@@ -31,7 +31,7 @@ export default function Hero() {
 						Korjata é uma plataforma de conexão entre programadores freelancers e empresas em busca de
 						soluções.
 					</p>
-					{session ? <SignInButton text={'Cadastre-se gratuitamente'} /> : <a href='/comecar'>Comece já!</a>}
+					{session ? <a href='/comecar'>Comece já!</a> : <SignInButton text={'Cadastre-se gratuitamente'} />}
 				</div>
 				<div className='relative max-sm:w-[50vw] max-sm:h-[50vw] max-sm:mx-auto col-span-3'>
 					<Image
