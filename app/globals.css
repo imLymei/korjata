@@ -12,6 +12,10 @@
 	@apply rounded-xl sm:hover:scale-105 transition-all duration-300 md:min-h-[45vw] lg:min-h-[25vw] p-4 flex flex-col justify-center items-center;
 }
 
+.app-region {
+	-webkit-app-region: drag;
+}
+
 /*scrollbar settings*/
 
 ::-webkit-scrollbar {
