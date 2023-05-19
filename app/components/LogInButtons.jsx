@@ -3,6 +3,7 @@
 import { useSession, signIn, signOut, getSession } from 'next-auth/react';
 import Image from 'next/image';
 import SignInButton from './SignInButton';
+import IsLoading from './IsLoading';
 
 export default function LogInButtons() {
 	const { data: session, status } = useSession();
@@ -38,16 +39,6 @@ function IsLogged({ session }) {
 				</div>
 				<p className='max-sm:absolute max-sm:w-0 max-sm:h-0 max-sm:overflow-hidden'>{session.user.name}</p>
 			</a>
-		</>
-	);
-}
-
-function IsLoading() {
-	return (
-		<>
-			<div className='w-8 h-8 flex justify-center items-center'>
-				<Image src='/loading-dots.gif' alt='User image' width={1000} height={1000} />
-			</div>
 		</>
 	);
 }
