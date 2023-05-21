@@ -1,10 +1,10 @@
 'use client';
 
+import IsLoading from '@/app/components/IsLoading';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
-import IsLoading from '../components/IsLoading';
 
-export default function User() {
+export default function User({ params }) {
 	const { data: session } = useSession({ required: true });
 	const [posts, setPosts] = useState([]);
 
