@@ -16,7 +16,7 @@ export default function User() {
 			},
 		};
 
-		const response = await fetch('http://localhost:3000/api/posts/getAll');
+		const response = await fetch('https://korjata.vercel.app/api/posts/getAll');
 		const res = await response.json();
 
 		return res.response;
