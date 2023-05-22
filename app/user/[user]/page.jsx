@@ -89,34 +89,7 @@ export default function User({ params }) {
 				<div className='flex justify-center mt-[40vh]'>
 					<IsLoading />
 				</div>
-			) : user[0] != 0 ? (<div className='text-center'>
-			<div className='flex justify-center items-center gap-2 p-4'>
-				<h1 className='text-4xl m-4'>{params.user}</h1>
-				<div className='w-12 border border-primary-one-300 rounded-xl overflow-hidden'>
-					<Image
-						src={user.image && user.image != '' ? user.image : '/placeholder.png'}
-						alt='User image'
-						width={1000}
-						height={1000}
-					/>
-				</div>
-			</div>
-			<div className='grid grid-cols-3 items-center gap-4'>
-				{posts.map((post, index) => {
-					return (
-						<div
-							className='flex flex-col justify-between text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
-							key={index}>
-							<h2 className='text-2xl font-semibold'>{post.data.title}</h2>
-							<h3>{post.data.description}</h3>
-							<h3>{post.data.code}</h3>
-							<h3>{post.data.bounty}</h3>
-							<h3>{formatDate(post.data.dateLimit)}</h3>
-						</div>
-					);
-				})}
-			</div>
-		</div>): <NotFound />
+			) : user[0].name ? <UserData /> : <NotFound />
 			
 			}
 		</>
