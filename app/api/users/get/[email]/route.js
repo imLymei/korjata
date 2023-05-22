@@ -10,14 +10,14 @@ export async function GET(request, { params }) {
 
 	try {
 		const database = client.db('korjata');
-		const posts = database.collection('posts');
+		const users = database.collection('users');
 
-		const query = { owner: params.user };
-		const post = await posts.find(query);
+		const query = { email: params.email };
+		const user = await users.find(query);
 
 		let response = [];
 
-		for await (const data of post) {
+		for await (const data of user) {
 			response.push(data);
 		}
 

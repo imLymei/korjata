@@ -2,24 +2,43 @@
 
 import IsLoading from '@/app/components/IsLoading';
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function User({ params }) {
-	const { data: session } = useSession({ required: true });
 	const [posts, setPosts] = useState([]);
+	const [user, setUser] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	async function getPosts() {
-		const data = {
-			method: 'GET',
-			header: {
-				'Content-Type': 'application/json',
-			},
-		};
+		const baseUrl = 'https://korjata.vercel.app/api/posts/getAll/';
+		// const baseUrl = 'http://localhost:3000/api/posts/getAll/';
 
-		const response = await fetch('https://korjata.vercel.app/api/posts/getAll');
+		const url = baseUrl + params.user;
+
+		const response = await fetch(url);
 		const res = await response.json();
 
 		return res.response;
+	}
+
+	async function getUser() {
+		const baseUrl = 'https://korjata.vercel.app/api/users/getByName/';
+		// const baseUrl = 'http://localhost:3000/api/users/getByName/';
+
+		const url = baseUrl + params.user;
+
+		const response = await fetch(url);
+		const res = await response.json();
+
+		console.log(res.response.length);
+
+		if (res.response.length == 0) return [0];
+		else return res.response;
+	}
+
+	if (user.length == 0) {
+		getUser().then((data) => setUser(data[0]));
 	}
 
 	function formatDate(date) {
@@ -27,13 +46,32 @@ export default function User({ params }) {
 		return `${newDate[2]}/${newDate[1]}/${newDate[0]}`;
 	}
 
-	getPosts().then((data) => setPosts(data));
+	useEffect(() => {
+		getPosts().then((data) => {
+			setPosts(data);
+			setIsLoading(false);
+		});
+	}, []);
 
 	return (
 		<>
-			{session ? (
+			{isLoading ? (
+				<div className='flex justify-center mt-[40vh]'>
+					<IsLoading />
+				</div>
+			) : (
 				<div className='text-center'>
-					<h1 className='text-4xl m-4'>Bem vindo {session.user.name}!</h1>
+					<div className='flex justify-center items-center gap-2 p-4'>
+						<h1 className='text-4xl m-4'>{params.user}</h1>
+						<div className='w-12 border border-primary-one-300 rounded-xl overflow-hidden'>
+							<Image
+								src={user.image && user.image != '' ? user.image : '/placeholder.png'}
+								alt='User image'
+								width={1000}
+								height={1000}
+							/>
+						</div>
+					</div>
 					<div className='grid grid-cols-3 items-center gap-4'>
 						{posts.map((post, index) => {
 							return (
@@ -50,8 +88,6 @@ export default function User({ params }) {
 						})}
 					</div>
 				</div>
-			) : (
-				<IsLoading />
 			)}
 		</>
 	);

@@ -5,19 +5,19 @@ const { MongoClient } = require('mongodb');
 
 const uri = process.env.MONGODB_URI;
 
-export async function GET() {
+export async function GET(request, { params }) {
 	const client = new MongoClient(uri);
 
 	try {
 		const database = client.db('korjata');
-		const posts = database.collection('posts');
+		const users = database.collection('users');
 
-		const query = { owner: 'lymeicontato@gmail.com' };
-		const post = await posts.find(query);
+		const query = { username: params.name };
+		const user = await users.find(query);
 
 		let response = [];
 
-		for await (const data of post) {
+		for await (const data of user) {
 			response.push(data);
 		}
 
