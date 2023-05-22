@@ -13,8 +13,8 @@ export default function LogInButtons() {
 	let isLoading = status == 'loading';
 
 	async function getUser() {
-		// const baseUrl = 'https://korjata.vercel.app/api/users/get/';
-		const baseUrl = 'http://localhost:3000/api/users/get/';
+		const baseUrl = 'https://korjata.vercel.app/api/users/get/';
+		// const baseUrl = 'http://localhost:3000/api/users/get/';
 
 		const url = baseUrl + session.user.email;
 
