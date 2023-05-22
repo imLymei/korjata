@@ -89,7 +89,7 @@ export default function User({ params }) {
 				<div className='flex justify-center mt-[40vh]'>
 					<IsLoading />
 				</div>
-			) : user[0].name ? <UserData /> : <NotFound />
+			) : <UserData /> 
 			
 			}
 		</>
