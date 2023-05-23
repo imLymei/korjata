@@ -59,7 +59,7 @@ export default function User({ params }) {
 				<div className='flex justify-center mt-[40vh]'>
 					<IsLoading />
 				</div>
-			) : user[0] != 0 ? (
+			) : user.image? (
 				<div className='text-center'>
 					<div className='flex justify-center items-center gap-2 p-4'>
 						<h1 className='text-4xl m-4'>{params.user}</h1>
