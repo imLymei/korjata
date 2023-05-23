@@ -33,7 +33,7 @@ export default function User({ params }) {
 
 		console.log(res.response.length);
 
-		if (res.response.length == 0) return 0;
+		if (res.response.length == 0) return [0];
 		else return res.response;
 	}
 
