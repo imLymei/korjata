@@ -4,11 +4,11 @@ require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
 const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri);
 
 export async function POST(request) {
-	const client = new MongoClient(uri);
-
 	try {
+		client.connect()
 		const database = client.db('korjata');
 		const users = database.collection('users');
 
