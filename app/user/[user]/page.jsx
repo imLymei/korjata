@@ -93,19 +93,23 @@ export default function User({ params }) {
 					</div>
 					<h2 className='text-2xl p-4 font-bold'>Meus Posts</h2>
 					<div className='grid grid-cols-3 items-center gap-4'>
-						{posts.map((post, index) => {
-							return (
-								<div
-									className='flex flex-col justify-between text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
-									key={index}>
-									<h2 className='text-2xl font-semibold'>{post.data.title}</h2>
-									<h3>{post.data.description}</h3>
-									<h3>{post.data.code}</h3>
-									<h3>{post.data.bounty}</h3>
-									<h3>{formatDate(post.data.dateLimit)}</h3>
-								</div>
-							);
-						})}
+						{posts.length != 0 ? (
+							<>
+								{posts.map((post, index) => {
+									return (
+										<div
+											className='flex flex-col justify-between text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
+											key={index}>
+											<h2 className='text-2xl font-semibold'>{post.data.title}</h2>
+											<h3>{post.data.description}</h3>
+											<h3>{post.data.code}</h3>
+											<h3>{post.data.bounty}</h3>
+											<h3>{formatDate(post.data.dateLimit)}</h3>
+										</div>
+									);
+								})}
+							</>
+						) : (<h3>Nenhum Post ainda. :(</h3>) }
 					</div>
 					<h2 className='text-2xl p-4 font-bold'>Meus Posts Favoritos</h2>
 					{favPosts.length != 0 ? (
