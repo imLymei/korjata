@@ -6,8 +6,8 @@ const { MongoClient } = require('mongodb');
 const uri = process.env.MONGODB_URI;
 
 export async function GET(request, { params }) {
+	const client = new MongoClient(uri);
 	try {
-		const client = new MongoClient(uri);
 		const database = client.db('korjata');
 		const users = database.collection('users');
 

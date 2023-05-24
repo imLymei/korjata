@@ -54,7 +54,6 @@ export default function User({ params }) {
 
 	if (user.length == 0) {
 		getUser().then((data) => setUser(data[0]));
-		// getFavPosts().then((data) =>setFavPosts(data))
 	} else{
 		if (favPosts.length == 0 && user.savedPosts){
 			getFavPosts().then((data) => setFavPosts(data))
