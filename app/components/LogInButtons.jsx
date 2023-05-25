@@ -9,7 +9,6 @@ import { useState } from 'react';
 export default function LogInButtons() {
 	const { data: session, status } = useSession();
 	const [user, setUser] = useState([]);
-	const [gotUser, setGotUser] = useState(false);
 
 	let isLoading = (status == 'loading' || user.length == 0) && status != 'unauthenticated';
 
@@ -62,7 +61,7 @@ export default function LogInButtons() {
 	if (session && user.length == 0) {
 		getUser().then((data) => {
 			setUser(data[0].username);
-			setGotUser(true);
+			console.log(data);
 		});
 	}
 

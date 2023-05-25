@@ -26,7 +26,7 @@ export async function POST(request) {
 				console.log('user added');
 			});
 
-			return NextResponse.json({ response: user });
+			return NextResponse.json({ response: [user] });
 		} else {
 			return NextResponse.json('INVALID DATA');
 		}
