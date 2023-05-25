@@ -205,7 +205,7 @@ export default function User({ params }) {
 					</div>
 					<div className='flex justify-center gap-2'>
 						<h2 className='text-2xl p-4 font-bold'>Meus Posts</h2>
-						{session.user.email == pageUser.email && (
+						{session && session.user.email == pageUser.email && (
 							<button onClick={() => setIsCreatingPost(true)}>ADD NEW POST</button>
 						)}
 					</div>
