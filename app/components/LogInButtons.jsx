@@ -55,13 +55,12 @@ export default function LogInButtons() {
 
 		console.log('added user');
 
-		return res;
+		return res.response;
 	}
 
 	if (session && user.length == 0) {
 		getUser().then((data) => {
-			if (typeof data == 'object') setUser(data.username);
-			else setUser(data[0].username);
+			setUser(data[0].username);
 			console.log(data);
 		});
 	}
