@@ -60,7 +60,8 @@ export default function LogInButtons() {
 
 	if (session && user.length == 0) {
 		getUser().then((data) => {
-			setUser(data[0].username);
+			if (typeof data == 'object') setUser(data.username);
+			else setUser(data[0].username);
 			console.log(data);
 		});
 	}
