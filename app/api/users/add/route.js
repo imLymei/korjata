@@ -21,12 +21,14 @@ export async function POST(request) {
 				savedPosts: [],
 			};
 
+			const apiResponse = [user];
+
 			users.insertOne(user, (error, response) => {
 				if (error) throw error;
-				console.log('user added');
+				console.log('user added', apiResponse);
 			});
 
-			return NextResponse.json({ response: [user] });
+			return NextResponse.json({ response: apiResponse });
 		} else {
 			return NextResponse.json('INVALID DATA');
 		}
