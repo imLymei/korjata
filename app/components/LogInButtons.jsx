@@ -1,16 +1,16 @@
 'use client';
 
-import { useSession, signIn, signOut, getSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import SignInButton from './SignInButton';
 import IsLoading from './IsLoading';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function LogInButtons() {
 	const { data: session, status } = useSession();
 	const [user, setUser] = useState([]);
 
-	let isLoading = status == 'loading';
+	let isLoading = status == 'loading' || user.length == 0;
 
 	async function getUser() {
 		const baseUrl = 'https://korjata.vercel.app/api/users/get/';
@@ -22,6 +22,7 @@ export default function LogInButtons() {
 		const res = await response.json();
 
 		console.log(res.response.length);
+		console.log(res);
 
 		if (res.response.length != 0) return res.response;
 		else {
@@ -58,7 +59,9 @@ export default function LogInButtons() {
 	}
 
 	if (session && user.length == 0) {
-		getUser().then((data) => setUser(data[0].username));
+		getUser().then((data) => {
+			setUser(data[0].username);
+		});
 	}
 
 	return (

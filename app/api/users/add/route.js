@@ -17,7 +17,8 @@ export async function POST(request) {
 			const user = {
 				email: body.email,
 				username: body.username,
-				image: body.image,
+				image: body.image ? body.image : '',
+				savedPosts: [],
 			};
 
 			users.insertOne(user, (error, response) => {
