@@ -23,8 +23,8 @@ export default function User({ params }) {
 	const { data: session, status } = useSession();
 
 	async function getPosts() {
-		// const baseUrl = 'https://korjata.vercel.app/api/posts/getAll/';
-		const baseUrl = 'http://localhost:3000/api/posts/getAll/';
+		const baseUrl = 'https://korjata.vercel.app/api/posts/getAll/';
+		// const baseUrl = 'http://localhost:3000/api/posts/getAll/';
 
 		const url = baseUrl + params.user;
 
@@ -35,8 +35,8 @@ export default function User({ params }) {
 	}
 
 	async function getUser() {
-		// const baseUrl = 'https://korjata.vercel.app/api/users/getByName/';
-		const baseUrl = 'http://localhost:3000/api/users/getByName/';
+		const baseUrl = 'https://korjata.vercel.app/api/users/getByName/';
+		// const baseUrl = 'http://localhost:3000/api/users/getByName/';
 
 		const url = baseUrl + params.user;
 
@@ -50,8 +50,8 @@ export default function User({ params }) {
 	}
 
 	async function getFavPosts() {
-		// const baseUrl = 'https://korjata.vercel.app/api/posts/get/';
-		const baseUrl = 'http://localhost:3000/api/posts/get/';
+		const baseUrl = 'https://korjata.vercel.app/api/posts/get/';
+		// const baseUrl = 'http://localhost:3000/api/posts/get/';
 
 		const savedPosts = pageUser.savedPosts.join('-');
 
@@ -84,8 +84,8 @@ export default function User({ params }) {
 			body: newPost,
 		};
 
-		// const url = 'https://korjata.vercel.app/api/posts/add';
-		const url = 'http://localhost:3000/api/posts/add';
+		const url = 'https://korjata.vercel.app/api/posts/add';
+		// const url = 'http://localhost:3000/api/posts/add';
 
 		const response = await fetch(url, data);
 		const res = await response.json();
@@ -104,8 +104,8 @@ export default function User({ params }) {
 			body: JSON.stringify({ id: id, email: session.user.email }),
 		};
 
-		// const url = 'https://korjata.vercel.app/api/posts/delete';
-		const url = 'http://localhost:3000/api/posts/delete';
+		const url = 'https://korjata.vercel.app/api/posts/delete';
+		// const url = 'http://localhost:3000/api/posts/delete';
 
 		const response = await fetch(url, data);
 
@@ -132,8 +132,8 @@ export default function User({ params }) {
 			body: body,
 		};
 
-		// const url = 'https://korjata.vercel.app/api/users/add/favoritePost';
-		const url = 'http://localhost:3000/api/users/add/favoritePost';
+		const url = 'https://korjata.vercel.app/api/users/add/favoritePost';
+		// const url = 'http://localhost:3000/api/users/add/favoritePost';
 
 		const response = await fetch(url, data);
 		const res = await response.json();
