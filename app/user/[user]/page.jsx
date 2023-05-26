@@ -23,8 +23,8 @@ export default function User({ params }) {
 	const { data: session, status } = useSession();
 
 	async function getPosts() {
-		const baseUrl = 'https://korjata.vercel.app/api/posts/getAll/';
-		// const baseUrl = 'http://localhost:3000/api/posts/getAll/';
+		// const baseUrl = 'https://korjata.vercel.app/api/posts/getAll/';
+		const baseUrl = 'http://localhost:3000/api/posts/getAll/';
 
 		const url = baseUrl + params.user;
 
@@ -35,8 +35,8 @@ export default function User({ params }) {
 	}
 
 	async function getUser() {
-		const baseUrl = 'https://korjata.vercel.app/api/users/getByName/';
-		// const baseUrl = 'http://localhost:3000/api/users/getByName/';
+		// const baseUrl = 'https://korjata.vercel.app/api/users/getByName/';
+		const baseUrl = 'http://localhost:3000/api/users/getByName/';
 
 		const url = baseUrl + params.user;
 
@@ -50,8 +50,8 @@ export default function User({ params }) {
 	}
 
 	async function getFavPosts() {
-		const baseUrl = 'https://korjata.vercel.app/api/posts/get/';
-		// const baseUrl = 'http://localhost:3000/api/posts/get/';
+		// const baseUrl = 'https://korjata.vercel.app/api/posts/get/';
+		const baseUrl = 'http://localhost:3000/api/posts/get/';
 
 		const savedPosts = pageUser.savedPosts.join('-');
 
@@ -84,8 +84,8 @@ export default function User({ params }) {
 			body: newPost,
 		};
 
-		const url = 'https://korjata.vercel.app/api/posts/add';
-		// const url = 'http://localhost:3000/api/posts/add';
+		// const url = 'https://korjata.vercel.app/api/posts/add';
+		const url = 'http://localhost:3000/api/posts/add';
 
 		const response = await fetch(url, data);
 		const res = await response.json();
@@ -104,8 +104,8 @@ export default function User({ params }) {
 			body: JSON.stringify({ id: id, email: session.user.email }),
 		};
 
-		const url = 'https://korjata.vercel.app/api/posts/delete';
-		// const url = 'http://localhost:3000/api/posts/delete';
+		// const url = 'https://korjata.vercel.app/api/posts/delete';
+		const url = 'http://localhost:3000/api/posts/delete';
 
 		const response = await fetch(url, data);
 
@@ -132,8 +132,8 @@ export default function User({ params }) {
 			body: body,
 		};
 
-		const url = 'https://korjata.vercel.app/api/users/add/favoritePost';
-		// const url = 'http://localhost:3000/api/users/add/favoritePost';
+		// const url = 'https://korjata.vercel.app/api/users/add/favoritePost';
+		const url = 'http://localhost:3000/api/users/add/favoritePost';
 
 		const response = await fetch(url, data);
 		const res = await response.json();
@@ -261,10 +261,14 @@ export default function User({ params }) {
 							/>
 						</div>
 					</div>
-					<div className='flex justify-center gap-2'>
+					<div className='flex items-center justify-center gap-2'>
 						<h2 className='text-2xl p-4 font-bold'>Meus Posts</h2>
 						{session && session.user.email == pageUser.email && (
-							<button onClick={() => setIsCreatingPost(true)}>ADD NEW POST</button>
+							<button
+								onClick={() => setIsCreatingPost(true)}
+								className='px-4 h-1/2 rounded-xl hover:bg-primary-one-300/10 border border-primary-one-300'>
+								Criar post <span className='text-primary-one-300 font-bold'>+</span>
+							</button>
 						)}
 					</div>
 					<div
@@ -276,7 +280,7 @@ export default function User({ params }) {
 								{posts.map((post, index) => {
 									return (
 										<div
-											className='relative flex flex-col justify-between text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
+											className='relative flex flex-col justify-between bg-black/30 text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
 											key={index}>
 											{session && session.user.email == pageUser.email && (
 												<button
@@ -307,28 +311,30 @@ export default function User({ params }) {
 						)}
 					</div>
 					<h2 className='text-2xl p-4 font-bold'>Meus Posts Favoritos</h2>
-					{favPosts.length != 0 ? (
-						<div className='grid grid-cols-3 items-center gap-4'>
-							{favPosts.map((post, index) => {
-								return (
-									<div
-										className='flex flex-col justify-between text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
-										key={index}>
-										<h2 className='text-2xl font-semibold'>{post.data.title}</h2>
-										<h3>{post.data.description}</h3>
-										<h3>{post.data.code}</h3>
-										<h3>{post.data.bounty}</h3>
-										<h3>{formatDate(post.data.dateLimit)}</h3>
-										<h4>
-											by <a href={`/user/${post.owner}`}>{post.owner}</a>
-										</h4>
-									</div>
-								);
-							})}
-						</div>
-					) : (
-						<h3>Nenhum Post Favorito ainda. :(</h3>
-					)}
+					<div className='py-8'>
+						{favPosts.length != 0 ? (
+							<div className='grid grid-cols-3 items-center gap-4'>
+								{favPosts.map((post, index) => {
+									return (
+										<div
+											className='flex flex-col justify-between bg-black/30 text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
+											key={index}>
+											<h2 className='text-2xl font-semibold'>{post.data.title}</h2>
+											<h3>{post.data.description}</h3>
+											<h3>{post.data.code}</h3>
+											<h3>{post.data.bounty}</h3>
+											<h3>{formatDate(post.data.dateLimit)}</h3>
+											<h4>
+												by <a href={`/user/${post.owner}`}>{post.owner}</a>
+											</h4>
+										</div>
+									);
+								})}
+							</div>
+						) : (
+							<h3>Nenhum Post Favorito ainda. :(</h3>
+						)}
+					</div>
 				</div>
 			) : (
 				<div className='flex justify-center items-center mt-[40vh] text-4xl'>

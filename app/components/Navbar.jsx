@@ -19,8 +19,8 @@ export default function Navbar() {
 				<a href='/sobre' className={pathName[1] == 'sobre' ? 'text-primary-one-300' : ''}>
 					Sobre Nós
 				</a>
-				<a href='/comecar' className={pathName[1] == 'comecar' ? 'text-primary-one-300' : ''}>
-					Como Começar
+				<a href='/ultimos-posts' className={pathName[1] == 'ultimos-posts' ? 'text-primary-one-300' : ''}>
+					Últimos Posts
 				</a>
 			</div>
 			<LogInButtons />

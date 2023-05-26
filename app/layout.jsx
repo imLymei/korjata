@@ -14,7 +14,8 @@ export const metadata = {
 export default function RootLayout({ children, session }) {
 	return (
 		<html lang='en'>
-			<body className={`bg-black text-white px-2 sm:px-[4vw] lg:px-[16vw] ${roboto.className}`}>
+			<body
+				className={`min-h-screen bg-gradient-to-bl from-black to-primary-one-300/30 bg-black text-white px-2 sm:px-[4vw] lg:px-[16vw] ${roboto.className}`}>
 				<div className='fixed top-0 left-0 h-10 w-screen -z-10 app-region'></div>
 				<NextProvider session={session}>
 					<Navbar />
