@@ -109,6 +109,10 @@ export default function User({ params }) {
 
 		const response = await fetch(url, data);
 
+		if (favPosts.includes(id)){
+			setFavPosts(favPosts.filter(data=>data.id != id))
+		}
+
 		if (session.user.email == pageUser.email) {
 			setFavPosts(favPosts.filter((data) => data._id != id));
 			setPosts(posts.filter((data) => data._id != id));
@@ -260,7 +264,7 @@ export default function User({ params }) {
 								height={1000}
 							/>
 						</div>
-					</div
+					</div>
 					{session && (<h4 className='text-xl m-4'>{pageUser.email}</h4>)}
 					<div className='flex items-center justify-center gap-2'>
 						<h2 className='text-2xl p-4 font-bold'>Meus Posts</h2>
