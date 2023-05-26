@@ -313,7 +313,7 @@ export default function User({ params }) {
 					<h2 className='text-2xl p-4 font-bold'>Meus Posts Favoritos</h2>
 					<div className='py-8'>
 						{favPosts.length != 0 ? (
-							<div className='grid grid-cols-3 items-center gap-4'>
+							<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center gap-4'>
 								{favPosts.map((post, index) => {
 									return (
 										<div
