@@ -261,7 +261,7 @@ export default function User({ params }) {
 							/>
 						</div>
 					</div
-					<p classname='text-center'>Contato: {pageUser.email}</p>
+					<p className='text-center'>Contato: {pageUser.email}</p>
 					<div className='flex items-center justify-center gap-2'>
 						<h2 className='text-2xl p-4 font-bold'>Meus Posts</h2>
 						{session && session.user.email == pageUser.email && (
