@@ -4,6 +4,8 @@ import IsLoading from '@/app/components/IsLoading';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { HiOutlineTrash } from 'react-icons/hi';
+import { GiHeartburn } from 'react-icons/gi';
 
 export default function User({ params }) {
 	const [posts, setPosts] = useState([]);
@@ -21,8 +23,8 @@ export default function User({ params }) {
 	const { data: session, status } = useSession();
 
 	async function getPosts() {
-		const baseUrl = 'https://korjata.vercel.app/api/posts/getAll/';
-		// const baseUrl = 'http://localhost:3000/api/posts/getAll/';
+		// const baseUrl = 'https://korjata.vercel.app/api/posts/getAll/';
+		const baseUrl = 'http://localhost:3000/api/posts/getAll/';
 
 		const url = baseUrl + params.user;
 
@@ -33,8 +35,8 @@ export default function User({ params }) {
 	}
 
 	async function getUser() {
-		const baseUrl = 'https://korjata.vercel.app/api/users/getByName/';
-		// const baseUrl = 'http://localhost:3000/api/users/getByName/';
+		// const baseUrl = 'https://korjata.vercel.app/api/users/getByName/';
+		const baseUrl = 'http://localhost:3000/api/users/getByName/';
 
 		const url = baseUrl + params.user;
 
@@ -48,8 +50,8 @@ export default function User({ params }) {
 	}
 
 	async function getFavPosts() {
-		const baseUrl = 'https://korjata.vercel.app/api/posts/get/';
-		// const baseUrl = 'http://localhost:3000/api/posts/get/';
+		// const baseUrl = 'https://korjata.vercel.app/api/posts/get/';
+		const baseUrl = 'http://localhost:3000/api/posts/get/';
 
 		const savedPosts = pageUser.savedPosts.join('-');
 
@@ -82,13 +84,68 @@ export default function User({ params }) {
 			body: newPost,
 		};
 
-		const url = 'https://korjata.vercel.app/api/posts/add';
-		// const url = 'http://localhost:3000/api/posts/add';
+		// const url = 'https://korjata.vercel.app/api/posts/add';
+		const url = 'http://localhost:3000/api/posts/add';
 
 		const response = await fetch(url, data);
 		const res = await response.json();
 
 		console.log('added post');
+
+		return res;
+	}
+
+	async function deletePost(id) {
+		const data = {
+			method: 'PUT',
+			header: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ id: id, email: session.user.email }),
+		};
+
+		// const url = 'https://korjata.vercel.app/api/posts/delete';
+		const url = 'http://localhost:3000/api/posts/delete';
+
+		const response = await fetch(url, data);
+
+		if (session.user.email == pageUser.email) {
+			setFavPosts(favPosts.filter((data) => data._id != id));
+		}
+
+		console.log('deleted post');
+		setPosts(posts.filter((post) => post._id != id));
+	}
+
+	async function handleFavorites(post) {
+		const body = JSON.stringify({
+			email: session.user.email,
+			id: post._id,
+		});
+
+		const data = {
+			method: 'PATCH',
+			header: {
+				'Content-Type': 'application/json',
+			},
+			body: body,
+		};
+
+		// const url = 'https://korjata.vercel.app/api/users/add/favoritePost';
+		const url = 'http://localhost:3000/api/users/add/favoritePost';
+
+		const response = await fetch(url, data);
+		const res = await response.json();
+
+		if (session.user.email == pageUser.email) {
+			if (favPosts.includes(post)) {
+				setFavPosts(favPosts.filter((oldPost) => oldPost != post));
+			} else {
+				setFavPosts([...favPosts, post]);
+			}
+		}
+
+		console.log('added favorite post');
 
 		return res;
 	}
@@ -123,7 +180,7 @@ export default function User({ params }) {
 				<div className='text-center'>
 					{isCreatingPost && (
 						<div className='bg-black/50 absolute inset-0 flex justify-center items-center'>
-							<div className='bg-black border border-primary-one-300 w-[30vw]'>
+							<div className='bg-black z-50 border border-primary-one-300 w-[30vw]'>
 								<div className='relative flex justify-center items-center p-4'>
 									<h3>Criar post</h3>
 									<button
@@ -209,14 +266,32 @@ export default function User({ params }) {
 							<button onClick={() => setIsCreatingPost(true)}>ADD NEW POST</button>
 						)}
 					</div>
-					<div className='grid grid-cols-3 items-center gap-4'>
+					<div
+						className={`${
+							posts.length != 0 ? 'grid grid-cols-3' : 'flex'
+						} justify-center items-center gap-4`}>
 						{posts.length != 0 ? (
 							<>
 								{posts.map((post, index) => {
 									return (
 										<div
-											className='flex flex-col justify-between text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
+											className='relative flex flex-col justify-between text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
 											key={index}>
+											{session && session.user.email == pageUser.email && (
+												<button
+													onClick={() => {
+														deletePost(post._id);
+													}}
+													className='absolute top-4 left-4 origin-center transition hover:scale-105 hover:text-primary-one-300'>
+													<HiOutlineTrash className='absolute' size={20} />
+												</button>
+											)}
+
+											<button
+												onClick={() => handleFavorites(post)}
+												className='absolute top-4 right-4 origin-center transition hover:scale-105 hover:text-primary-one-300'>
+												<GiHeartburn size={20} />
+											</button>
 											<h2 className='text-2xl font-semibold'>{post.data.title}</h2>
 											<h3>{post.data.description}</h3>
 											<h3>{post.data.code}</h3>
@@ -227,7 +302,7 @@ export default function User({ params }) {
 								})}
 							</>
 						) : (
-							<h3>Nenhum Post ainda. :(</h3>
+							<h3 className='text-center w-full'>Nenhum Post ainda. :(</h3>
 						)}
 					</div>
 					<h2 className='text-2xl p-4 font-bold'>Meus Posts Favoritos</h2>

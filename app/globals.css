@@ -37,3 +37,7 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: #333;
 }
+
+::-webkit-calendar-picker-indicator {
+	filter: invert(1);
+}

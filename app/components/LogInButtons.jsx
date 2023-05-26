@@ -13,8 +13,8 @@ export default function LogInButtons() {
 	let isLoading = (status == 'loading' || user.length == 0) && status != 'unauthenticated';
 
 	async function getUser() {
-		const baseUrl = 'https://korjata.vercel.app/api/users/get/';
-		// const baseUrl = 'http://localhost:3000/api/users/get/';
+		// const baseUrl = 'https://korjata.vercel.app/api/users/get/';
+		const baseUrl = 'http://localhost:3000/api/users/get/';
 
 		const url = baseUrl + session.user.email;
 
@@ -47,8 +47,8 @@ export default function LogInButtons() {
 			body: newUser,
 		};
 
-		const url = 'https://korjata.vercel.app/api/users/add';
-		// const url = 'http://localhost:3000/api/users/add';
+		// const url = 'https://korjata.vercel.app/api/users/add';
+		const url = 'http://localhost:3000/api/users/add';
 
 		const response = await fetch(url, data);
 		const res = await response.json();
