@@ -21,7 +21,10 @@ export async function PUT(request) {
 				console.log('post deleted');
 			});
 
-			users.updateMany({ savedPosts: body.id }, { $pull: { savedPosts: body.id } });
+			users.updateMany(
+				{ savedPosts: new ObjectId(body.id) },
+				{ $pull: { savedPosts: new ObjectId(body.id) } }
+			);
 
 			return NextResponse.json({ response: 'Post deleted' });
 		} else {

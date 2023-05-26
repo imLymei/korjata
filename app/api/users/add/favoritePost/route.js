@@ -16,10 +16,13 @@ export async function PATCH(request) {
 		if (body.id && body.email) {
 			let user = await users.findOne({ email: body.email });
 
-			if (user.savedPosts.includes(body.id)) {
-				user.savedPosts = user.savedPosts.filter((postID) => postID != body.id);
+			const id = new ObjectId(body.id);
+
+			if (user.savedPosts.indexOf(id)) {
+				user.savedPosts = user.savedPosts.filter((data) => data != id);
+				console.log(user.savedPosts.indexOf(id));
 			} else {
-				user.savedPosts.unshift(new ObjectId(body.id));
+				user.savedPosts.unshift(id);
 			}
 
 			const apiResponse = await users.updateOne(
