@@ -18,12 +18,8 @@ export async function PATCH(request) {
 
 			const id = new ObjectId(body.id);
 
-			if (user.savedPosts.indexOf(id)) {
-				user.savedPosts = user.savedPosts.filter((data) => data != id);
-				console.log(user.savedPosts.indexOf(id));
-			} else {
-				user.savedPosts.unshift(id);
-			}
+			//DO NEVER PRESS THAT BUTTON TWICE PLYS
+			user.savedPosts.unshift(id);
 
 			const apiResponse = await users.updateOne(
 				{ email: body.email },
