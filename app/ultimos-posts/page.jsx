@@ -74,7 +74,7 @@ export default function Home() {
 								{posts.map((post, index) => {
 									return (
 										<div
-											className='relative flex flex-col justify-between bg-black/30 text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
+											className='relative flex flex-col items-center justify-between bg-black/30 text-white border border-primary-one-300 rounded-lg p-4 h-72 gap-2'
 											key={index}>
 											{status == 'authenticated' && (
 												<button
