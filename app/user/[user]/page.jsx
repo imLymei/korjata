@@ -111,6 +111,7 @@ export default function User({ params }) {
 
 		if (session.user.email == pageUser.email) {
 			setFavPosts(favPosts.filter((data) => data._id != id));
+			setPosts(posts.filter((data) => data._id != id));
 		}
 
 		console.log('deleted post');
