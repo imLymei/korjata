@@ -88,6 +88,9 @@ export default function Home() {
 											<h3>{post.data.code}</h3>
 											<h3>{post.data.bounty}</h3>
 											<h3>{formatDate(post.data.dateLimit)}</h3>
+											<h4>
+												by <a href={`/user/${post.owner}`}>{post.owner}</a>
+											</h4>
 										</div>
 									);
 								})}
