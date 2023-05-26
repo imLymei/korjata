@@ -33,9 +33,9 @@ export default function Hero() {
 					</p>
 					{session ? (
 						<a
-							href='/comecar'
+							href='/ultimos-posts'
 							className='border border-primary-one-300 hover:bg-white/10 hover:scale-105 transition-all duration-300 rounded-lg px-4 py-2 w-fit'>
-							Comece já!
+							Veja Nossos Posts!
 						</a>
 					) : (
 						<SignInButton text={'Cadastre-se gratuitamente'} />
